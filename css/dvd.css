@@ -1,0 +1,19 @@
+#content-container:has(> .dvd-logo) {
+    /* Override centering and padding */
+    display: block;
+    padding-top: 0;
+    
+    /* Make it fill the screen below the header */
+    position: fixed;
+    top: 70px; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* Keeps logo from peeking out */
+}
+
+.dvd-logo {
+    position: absolute; /* Allows us to move it with left/top */
+    width: 120px;
+    height: auto;
+}

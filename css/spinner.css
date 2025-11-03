@@ -1,0 +1,60 @@
+#content-container {
+    justify-content: center;
+    align-items: center;
+    padding-top: 20vh;
+}
+
+.spinner-ray-container { /* Overall size of the spinner */
+    position: relative;
+    width: 60px; 
+    height: 60px;
+}
+
+.spinner-ray {
+    position: absolute;
+    width: 6px;  /* Width of each ray */
+    height: 16px; /* Length of each ray */
+    background: #4a4a4a; /* The dark color of the ray */
+    border-radius: 3px;
+    
+    /* Position the ray's origin at the center of the container */
+    left: calc(50% - 3px); /* 50% minus half-width */
+    top: calc(50% - 8px); /* 50% minus half-height */
+
+    /* Set the transform origin to point 'down' from the center */
+    /* This creates the radius of the circle */
+    transform-origin: center 22px; 
+    
+    /* Apply the fading animation */
+    animation: rayFade 1.066s linear infinite;
+}
+
+/* This keyframe animation defines the "gradient trail"
+   by changing the opacity over time. */
+@keyframes rayFade {
+    0%   { opacity: 1; }     /* Darkest */
+    12.5% { opacity: 0.85; }
+    25%   { opacity: 0.7; }
+    37.5% { opacity: 0.55; }
+    50%   { opacity: 0.4; }
+    62.5% { opacity: 0.25; }
+    75%   { opacity: 0.1; }  
+    87.5% { opacity: 0; }  /* Lightest (fully transparent) */
+    100%  { opacity: 1; }     /* Loop back to darkest */
+}
+
+/* * This is the magic:
+ * 1. transform: rotate(...) - Rotates each ray into its FINAL, STATIONARY position.
+ * 2. animation-delay: ...  - Uses a NEGATIVE delay to start each ray
+ * at a different point in the opacity animation.
+ *
+ * This makes the "color" move clockwise while the rays stand still.
+*/
+.spinner-ray:nth-child(1) { transform: rotate(0deg);   animation-delay: 0s; }
+.spinner-ray:nth-child(2) { transform: rotate(45deg);  animation-delay: -0.931s; }
+.spinner-ray:nth-child(3) { transform: rotate(90deg);  animation-delay: -0.798s; }
+.spinner-ray:nth-child(4) { transform: rotate(135deg); animation-delay: -0.665s; }
+.spinner-ray:nth-child(5) { transform: rotate(180deg); animation-delay: -0.532s; }
+.spinner-ray:nth-child(6) { transform: rotate(225deg); animation-delay: -0.399s; }
+.spinner-ray:nth-child(7) { transform: rotate(270deg); animation-delay: -0.266s; }
+.spinner-ray:nth-child(8) { transform: rotate(315deg); animation-delay: -0.133s; }

@@ -1,0 +1,29 @@
+.question-card {
+    max-width: 600px;
+    margin: 40px auto; /* Center the card */
+    /* Add extra padding at the bottom for the button */
+    padding: 30px 40px 80px 40px; 
+    background-color: #ffffff;
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    position: relative; /* For the DONE button */
+}
+
+#question-title {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.question-list {
+    font-size: 1.1em;
+    color: #444;
+    padding-left: 20px;
+}
+
+.question-list li {
+    margin-bottom: 15px; /* Space between questions */
+}

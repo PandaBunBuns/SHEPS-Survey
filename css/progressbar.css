@@ -1,0 +1,30 @@
+.progress-bar-container {
+    width: 80%;
+    max-width: 500px; /* Prevents it from getting too wide */
+    background-color: #ffffff;
+    border-radius: 20px; /* Rounded corners for the container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    padding: 6px; /* A little space inside */
+    overflow: hidden; /* Keeps the fill bar inside the rounded corners */
+}
+
+.progress-bar-fill {
+    height: 20px;
+    width: 0%; /* Start at 0% width */
+    background-color: #1a73e8;
+    border-radius: 15px; /* Rounded corners for the fill */
+
+    animation: 
+        progress-shine 2s linear infinite,
+        fillAnimation 10s linear 1 forwards; /* 10s is the default */
+}
+
+@keyframes fillAnimation {
+    from { width: 0%; }
+    to   { width: 100%; }
+}
+
+@keyframes progress-shine {
+    from { background-position: 0 0; }
+    to { background-position: 40px 0; }
+}

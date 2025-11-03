@@ -1,0 +1,39 @@
+.welcome-card {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.welcome-card h2 {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    margin-top: 0;
+}
+
+.welcome-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.start-btn {
+    background-color: #1a73e8; /* Bright blue */
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.start-btn:hover {
+    background-color: #1865c9;
+}

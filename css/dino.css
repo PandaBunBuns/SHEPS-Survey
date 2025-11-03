@@ -1,0 +1,16 @@
+.game-container {
+    text-align: center;
+}
+
+.game-iframe {
+    height: 150px; /* Standard height for the game */
+    width: 600px;  /* Standard width */
+    border: none;  /* Hides the iframe border */
+    background: #f4f7fa; /* Matches our page background */
+}
+
+.game-instructions {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 10px;
+}
