@@ -10,7 +10,7 @@ const ACTIVE_ORDER_ID = 1;
 document.addEventListener("DOMContentLoaded", () => {
     
     // Define all 6 orders
-    // NOTE: 'loading bar' is 'progressbar', 'looping video' is 'dvd'
+    // NOTE: 'loading bar' is 'progressbar', 'looping video' is 'dvd', 'interactive' is 'dino'
     const ORDERS = {
         1: ["spinner", "dino", "progressbar", "dvd", "text", "blank"],
         2: ["dino", "progressbar", "dvd", "text", "blank", "spinner"],
