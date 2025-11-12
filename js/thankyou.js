@@ -43,9 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let [question, answer] of Object.entries(event.answers)) {
                 fileContent += `  - ${question}: ${answer}\n`;
             }
+        
         } else if (event.type === 'patience') {
-            fileContent += `Duration Waited: ${event.duration}\n`;
+            
+            fileContent += `Duration Waited: ${event.actual_duration}\n`;
+            
+            fileContent += "Answers:\n";
+            if (event.answers) {
+                for (let [question, answer] of Object.entries(event.answers)) {
+                    // Use 'N/A' as a fallback if an answer is empty
+                    fileContent += `  - ${question}: ${answer || 'N/A'}\n`;
+                }
+            }
         }
+        
         fileContent += `\n`; // Add a space before the next event
     });
 
@@ -56,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         download(filename, fileContent);
     }
 
-    // 6. Clear localStorage for the next user.
+    // 6. Clear localStorage
     localStorage.clear();
 
 });

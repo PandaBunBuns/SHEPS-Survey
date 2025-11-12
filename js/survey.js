@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     surveyForm.addEventListener("change", checkFormCompletion);
 
-    // --- 3. Add Logic to the DONE Button (Submission) ---
+    // --- 3. DONE Button (Submission) ---
     surveyForm.addEventListener("submit", (event) => {
         event.preventDefault(); 
         
@@ -70,10 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("currentStep", currentStep);
 
         if (currentStep >= 12) {
-            // We are done. Go to the Thank You page (where download happens).
+            // Done. Go to the Thank You page.
             window.location.href = "thankyou.html";
+        
+        } else if (currentStep === 6) {
+            // Finished Part 1 (step 5, which incremented to 6).
+            window.location.href = "part2.html";
+
         } else {
-            // Not the last step, just go to the next loader.
+            // Not the last step, go to the next loader.
             window.location.href = "loader.html";
         }
     });

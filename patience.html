@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHEPS Patience Task</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/survey.css"> 
     <link rel="stylesheet" href="css/patience.css">
 </head>
 <body>
@@ -19,17 +20,49 @@
 
     <main id="content-container">
         
-        <div class="question-card">
+        <form class="question-card" id="patience-form">
             <h2 id="question-title">QUESTIONS</h2>
 
-            <ol class="question-list">
-                <li>Why did you want to stop waiting for it to load?</li>
-                <li>How long do you think they waited for?</li>
-                <li>What made you wait for that amount of time and not shorter?</li>
-            </ol>
+            <div class="question-block">
+                <p class="question-text">1. Why did you want to stop waiting for it to load?</p>
+                <div class="options-container">
+                    <label><input type="checkbox" name="q1_why_stop" value="Frustration"> <span></span>Frustration</label>
+                    <label><input type="checkbox" name="q1_why_stop" value="Time Pressure"> <span></span>Time Pressure</label>
+                    <label><input type="checkbox" name="q1_why_stop" value="Lost Interest"> <span></span>Lost Interest</label>
+                    
+                    <div class="other-option-container">
+                        <label><input type="checkbox" name="q1_why_stop" value="other"> <span></span>Others:</label>
+                        <input type="text" name="q1_other_text" class="other-text-input" placeholder="Please specify">
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">2. How long do you think they waited for?</p>
+                <div class="time-select-container">
+                    <input type="number" name="q2_minutes" min="0" max="60" placeholder="Min">
+                    <span>min</span>
+                    <input type="number" name="q2_seconds" min="0" max="59" placeholder="Sec">
+                    <span>sec</span>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p class="question-text">3. What made you wait for that amount of time and not shorter?</p>
+                <div class="options-container">
+                    <label><input type="checkbox" name="q3_why_wait" value="Hope for Progress"> <span></span>Hope for Progress</label>
+                    <label><input type="checkbox" name="q3_why_wait" value="Engagement with Animation"> <span></span>Engagement</label>
+                    <label><input type="checkbox" name="q3_why_wait" value="External Distractions"> <span></span>External Distractions</label>
+                    
+                    <div class="other-option-container">
+                        <label><input type="checkbox" name="q3_why_wait" value="other"> <span></span>Others:</label>
+                        <input type="text" name="q3_other_text" class="other-text-input" placeholder="Please specify">
+                    </div>
+                </div>
+            </div>
             
-            <button class="done-btn" id="patience-done-btn">DONE</button>
-        </div>
+            <button type="submit" class="done-btn" id="patience-done-btn">DONE</button>
+        </form>
 
     </main>
     

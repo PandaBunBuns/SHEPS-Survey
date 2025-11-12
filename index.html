@@ -18,25 +18,47 @@
     </header>
 
     <main id="content-container">
-        
-        <div class="welcome-card">
-            <h2>WELCOME</h2>
-            
-            <label for="order-select" class="welcome-text">Please select the number stated by your facilitator.</label>
-            
-            <select id="order-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
-            
-            <p class="welcome-text">Press Start when instructed by your facilitator.</p>
-            <button class="start-btn" id="start-survey-btn">Start the Survey</button>
-        </div>
+        <div class="welcome-card" data-step="1">
 
+            <div class="welcome-step" id="step1">
+                <h2>WELCOME</h2>
+                <label for="order-select" class="welcome-text">
+                    Please select the number stated by your facilitator.
+                </label>
+                <select id="order-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <p class="welcome-text">Press Start when instructed by your facilitator.</p>
+                <button class="start-btn" id="start-survey-btn">Start the Survey</button>
+            </div>
+
+            <div class="welcome-step" id="step2">
+                <h2>INSTRUCTIONS</h2>
+                <p class="welcome-text">There will be 2 Parts to this survey.</p>
+                <p class="welcome-text">Please press 'F11' to enter full-screen mode.</p>
+                <p class="welcome-text">Please keep your eyes on the screen.</p>
+                <p class="welcome-text">Please refrain from using your phone or other devices during the survey.</p>
+                <button class="start-btn" id="continue-btn-1">Continue</button>
+            </div>
+
+            <div class="welcome-step" id="step3">
+                <h2>PART 1</h2>
+                <p class="welcome-text">You will be shown 6 different loading screens.</p>
+                <p class="welcome-text">They will last anywhere from 1-20 seconds.</p>
+                <p class="welcome-text">Each loading screen's duration is randomized.</p>
+                <p class="welcome-text">After each screen, there will be a short survey on your experience.</p>
+                <p class="welcome-text">After completing the questions, you will proceed to the next screen.</p>
+                <p class="welcome-text">Please refrain from asking the facilitator any questions while observing the loading screens.</p>
+                <p class="welcome-text">If you have any questions, please ask now.</p>
+                <button class="start-btn" id="continue-btn-2">Continue to Part 1</button>
+            </div>
+
+        </div>
     </main>
     
     <script src="js/welcome.js"></script>

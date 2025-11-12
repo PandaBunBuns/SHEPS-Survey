@@ -29,6 +29,14 @@
     margin: 20px 0;
 }
 
+.welcome-step {
+    display: none; /* Hide all steps by default */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .start-btn {
     background-color: #1a73e8;
     color: white;
