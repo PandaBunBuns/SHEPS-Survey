@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentContainer = document.getElementById("content-container");
     const buttonContainer = document.getElementById("button-container"); 
     
-    // --- We are in SURVEY MODE ---
+    // --- We are in NORMAL SURVEY MODE ---
     // Get State from localStorage
     const step = parseInt(localStorage.getItem("currentStep") || "0");
     const sequenceJSON = localStorage.getItem("orderSequence");
@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loaderName === 'spinner') {
         loadComponent("partials/spinner.html", contentContainer);
     } else if (loaderName === 'progressbar') {
-        // Pass isPatienceTask to set the 10s or 3min duration
         loadProgressBar(contentContainer, isPatienceTask);
     } else if (loaderName === 'text') {
         loadComponent("partials/loadingtext.html", contentContainer);
@@ -80,6 +79,19 @@ async function loadButtonAndRedirect(redirectUrl, container) {
         const doneButton = container.querySelector(".done-btn");
         if (doneButton) {
             doneButton.addEventListener("click", () => {
+                // --- NEW LOGIC: Calculate duration immediately ---
+                const startTime = localStorage.getItem('patienceStartTime');
+                if (startTime) {
+                    const duration = ((Date.now() - parseInt(startTime)) / 1000).toFixed(2);
+                    
+                    // Save this specific duration to use on the next page
+                    localStorage.setItem('tempPatienceDuration', duration);
+                    
+                    // Clean up start time
+                    localStorage.removeItem('patienceStartTime');
+                }
+                // -------------------------------------------------
+
                 window.location.href = redirectUrl; 
             });
         }

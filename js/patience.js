@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const doneButton = document.getElementById("patience-done-btn");
     const titleElement = document.getElementById("question-title");
 
-    // Get all the form elements we need to validate
     const q1Checkboxes = form.querySelectorAll('input[name="q1_why_stop"]');
     const q1OtherCheckbox = form.querySelector('input[name="q1_why_stop"][value="other"]');
     const q1OtherText = form.querySelector('input[name="q1_other_text"]');
@@ -29,36 +28,27 @@ document.addEventListener("DOMContentLoaded", () => {
     titleElement.textContent = title;
 
     // --- 3. VALIDATION LOGIC ---
-
-    // Disable the button by default
     doneButton.disabled = true;
 
-    // This function will check all rules
     function checkFormValidity() {
         // Rule 1: Check Question 1
-        // (At least one box must be checked)
         const q1CheckedCount = Array.from(q1Checkboxes).filter(cb => cb.checked).length;
         let isQ1Valid = q1CheckedCount > 0;
-        
-        // (If "Others" is checked, the text box must not be empty)
         if (q1OtherCheckbox.checked && q1OtherText.value.trim() === '') {
             isQ1Valid = false;
         }
 
         // Rule 2: Check Question 2
-        // (Total time must be greater than 0)
         const totalSeconds = (parseInt(q2Minutes.value || 0) * 60) + parseInt(q2Seconds.value || 0);
         const isQ2Valid = totalSeconds > 0;
 
-        // Rule 3: Check Question 3 (Same logic as Q1)
+        // Rule 3: Check Question 3
         const q3CheckedCount = Array.from(q3Checkboxes).filter(cb => cb.checked).length;
         let isQ3Valid = q3CheckedCount > 0;
-        
         if (q3OtherCheckbox.checked && q3OtherText.value.trim() === '') {
             isQ3Valid = false;
         }
 
-        // Final Check: Enable button only if all 3 rules are met
         if (isQ1Valid && isQ2Valid && isQ3Valid) {
             doneButton.disabled = false;
         } else {
@@ -66,19 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Run the check function every time the user types or clicks
     form.addEventListener('input', checkFormValidity);
 
 
     // --- 4. Add Logic to the Form on SUBMIT ---
-    // This code only runs when the button is clicked AND enabled
     form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Stop the page from reloading
+        event.preventDefault(); 
         
-        // --- Get the start time and calculate duration ---
-        const startTime = localStorage.getItem('patienceStartTime');
-        const durationInSeconds = ((Date.now() - parseInt(startTime)) / 1000).toFixed(2);
-        localStorage.removeItem('patienceStartTime');
+        // --- NEW LOGIC: Get the PRE-CALCULATED duration ---
+        // We get the value saved by script.js when the button was clicked
+        const durationInSeconds = localStorage.getItem('tempPatienceDuration') || "0";
+        localStorage.removeItem('tempPatienceDuration'); // Clean up
 
         // --- Get all the data from the form ---
         const formData = new FormData(form);
@@ -124,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         allEvents.push(patienceData);
         localStorage.setItem('allSurveyEvents', JSON.stringify(allEvents));
 
+        // --- Redirect Logic ---
         let currentStep = parseInt(localStorage.getItem("currentStep") || "0");
         currentStep++;
         localStorage.setItem("currentStep", currentStep);
